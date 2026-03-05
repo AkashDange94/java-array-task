@@ -4,22 +4,23 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // This pulls the code from your GitHub repository
                 checkout scm
             }
         }
 
         stage('Compile') {
             steps {
-                echo 'Compiling Java code...'
-                sh 'javac ArrayProcessor.java'
+                echo 'Compiling Java code on Windows...'
+                // Use 'bat' instead of 'sh' for Windows
+                bat 'javac ArrayProcessor.java'
             }
         }
 
         stage('Run & Test') {
             steps {
                 echo 'Executing the program...'
-                sh 'java ArrayProcessor'
+                // Use 'bat' instead of 'sh' for Windows
+                bat 'java ArrayProcessor'
             }
         }
     }
